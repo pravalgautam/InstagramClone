@@ -6,5 +6,24 @@ target 'InstagramClone' do
   use_frameworks!
 
   # Pods for InstagramClone
+pod 'Appirater'
+#Firebase
+pod 'Firebase/Core'
+pod 'Firebase/Auth'
+pod 'Firebase/Database'
+pod 'Firebase/Analytics'
+pod 'Firebase/Crashlytics'
+pod 'Firebase/Storage'
+
 
 end
+
+ post_install do |installer|
+     installer.generated_projects.each do |project|
+           project.targets.each do |target|
+               target.build_configurations.each do |config|
+                   config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '17.0'
+                end
+           end
+    end
+ end
